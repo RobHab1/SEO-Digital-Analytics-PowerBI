@@ -2,7 +2,7 @@
 
 Business Intelligence solution developed in Microsoft Power BI to monitor SEO performance, website traffic and digital marketing KPIs through interactive dashboards, dimensional data modeling and Power Query ETL.
 
-![Dashboard](images/dashboard.png)
+![Dashboard](Images/dashboard.png)
 
 ---
 
@@ -69,7 +69,7 @@ Main transformation steps included:
 - KPI calculations
 - Data validation
 
-![Power Query](images/power-query.png)
+![Power Query](Images/power-query.png)
 
 ---
 
@@ -88,7 +88,7 @@ Features include:
 - SEO Dimension
 - Traffic Source Dimension
 
-![Star Schema](images/star-schema.png)
+![Star Schema](Images/star-schema.png)
 
 ---
 

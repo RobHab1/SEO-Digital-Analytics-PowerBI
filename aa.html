@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEO & Digital Analytics Dashboard - Project Report</title>
+<style>
+:root{
+  --navy:#081a2b;
+  --navy-2:#0d2740;
+  --navy-3:#123552;
+  --blue:#2f80ed;
+  --teal:#2bb6a8;
+  --gold:#f0b44d;
+  --bg:#f4f7fb;
+  --text:#1b2a3a;
+  --muted:#66788a;
+  --line:#d9e2ec;
+  --white:#ffffff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.45; /* Lite mer kompakt radavstånd */
+}
+.cover{
+  background:linear-gradient(135deg,var(--navy),var(--navy-3));
+  color:white;
+  padding:40px 24px; /* Minskat från 72px/64px */
+}
+.cover-inner{
+  max-width:980px;
+  margin:auto;
+}
+.eyebrow{
+  color:#8fe5dc;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-size:11px; /* Minskat från 12px */
+}
+h1{
+  font-size:36px; /* Minskat från 48px */
+  line-height:1.1;
+  margin:10px 0 12px; /* Minskat från 14px/16px */
+}
+.lead{
+  max-width:560px;
+  font-size:16px; /* Minskat från 19px */
+  color:#d8e6f2;
+}
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px; /* Minskat från 10px */
+  margin-top:16px; /* Minskat från 26px */
+}
+.badge{
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16);
+  padding:6px 10px; /* Minskat från 8px/12px */
+  border-radius:750px;
+  font-size:11px; /* Minskat från 13px */
+}
+main{
+  max-width:800px;
+  margin:-20px auto 40px; /* Mer kompakt avstånd */
+  padding:0 24px;
+}
+.card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px; /* Minskat från 18px */
+  padding:20px 24px; /* Minskat från 28px */
+  margin-bottom:12px; /* Minskat från 20px */
+  box-shadow:0 6px 16px rgba(13,39,64,.04); /* Lite mjukare skugga */
+}
+h2{
+  color:var(--navy-2);
+  margin:0 0 10px;
+  font-size:20px; /* Minskat från 26px */
+}
+h3{
+  color:var(--navy-3);
+  margin:14px 0 6px; /* Minskat från 24px/8px */
+  font-size:16px;
+}
+p{margin:0 0 10px} /* Minskat från 14px */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px; /* Minskat från 18px */
+}
+.kpi{
+  background:linear-gradient(180deg,#f8fbff,#eef5fb);
+  border:1px solid var(--line);
+  border-radius:10px; /* Minskat från 14px */
+  padding:12px; /* Minskat från 18px */
+}
+.kpi strong{
+  display:block;
+  color:var(--navy-2);
+  margin-bottom:3px;
+}
+.flow{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px; /* Minskat från 10px */
+  align-items:center;
+  text-align:center;
+}
+.step{
+  background:var(--navy-2);
+  color:white;
+  padding:10px 8px; /* Minskat från 16px/10px */
+  border-radius:10px;
+  min-height:54px; /* Minskat från 86px */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px; /* Minskat från 14px */
+  line-height:1.2;
+}
+.arrow{
+  color:var(--teal);
+  font-size:20px; /* Minskat från 24px */
+  font-weight:800;
+}
+ul{
+  margin:6px 0 0 18px; /* Minskat från 8px/20px */
+  padding:0;
+}
+li{margin:4px 0} /* Minskat från 6px */
+.note{
+  background:#eef8f7;
+  border-left:4px solid var(--teal);
+  padding:10px 14px; /* Minskat från 14px/16px */
+  border-radius:8px;
+  color:#244b4a;
+}
+.footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:11px; /* Minskat från 13px */
+  margin-top:20px; /* Minskat från 28px */
+}
+@media(max-width:760px){
+  h1{font-size:30px}
+  .grid{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr}
+  .arrow{transform:rotate(90deg)}
+}
+
+/* Styr utskriften exakt till 3 A4-sidor */
+@media print{
+  body{background:white}
+  .cover{padding:30px 24px}
+  main{margin:0 auto}
+  .card{box-shadow:none;break-inside:avoid}
+  
+  /* Delar upp de 9 korten jämnt på 3 sidor */
+  .card:nth-of-type(3),
+  .card:nth-of-type(6) {
+    page-break-before: always;
+    break-before: page;
+  }
+}
+</style>
+</head>
+<body>
+<header class="cover">
+  <div class="cover-inner">
+    <div class="eyebrow">Business Intelligence Project Report</div>
+    <h1>SEO & Digital Analytics Dashboard</h1>
+    <p class="lead">
+      A Power BI solution designed for a private client to support SEO monitoring,
+      digital marketing analysis and executive reporting.
+    </p>
+    <div class="badges">
+      <span class="badge">Microsoft Power BI</span>
+      <span class="badge">Power Query</span>
+      <span class="badge">Star Schema</span>
+      <span class="badge">KPI Design</span>
+      <span class="badge">Digital Analytics</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Project Overview</h2>
+    <p>
+      This project was developed for a private client to deliver a Business Intelligence
+      solution for SEO and digital marketing analytics. Company information and business
+      data have been anonymized to protect client confidentiality.
+    </p>
+    <p>
+      The objective was to transform raw digital marketing data into meaningful business
+      insights through interactive dashboards, KPI reporting and dimensional data modeling
+      in Microsoft Power BI.
+    </p>
+    <div class="note">
+      The solution documents the complete BI workflow, from data preparation and modeling
+      to dashboard design and executive reporting.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Business Challenge</h2>
+    <p>
+      The client required a centralized reporting solution to monitor website performance,
+      search visibility, traffic quality and marketing effectiveness.
+    </p>
+    <div class="grid">
+      <div class="kpi"><strong>Website Performance</strong>Monitor visits and platform usage over time.</div>
+      <div class="kpi"><strong>SEO Visibility</strong>Track search positions and keyword performance.</div>
+      <div class="kpi"><strong>Traffic Quality</strong>Analyze bounce rate and engagement trends.</div>
+      <div class="kpi"><strong>Conversion</strong>Measure how digital activity supports business outcomes.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Solution Architecture</h2>
+    <div class="flow">
+      <div class="step">Digital Analytics Data</div>
+      <div class="arrow">→</div>
+      <div class="step">Power Query ETL</div>
+      <div class="arrow">→</div>
+      <div class="step">Star Schema</div>
+    </div>
+    <div class="flow" style="margin-top:10px">
+      <div class="step">KPI Calculations</div>
+      <div class="arrow">→</div>
+      <div class="step">Power BI Dashboard</div>
+      <div class="arrow">→</div>
+      <div class="step">Executive Insights</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Data Preparation</h2>
+    <p>
+      Power Query was used to prepare the data for analysis. The ETL process focused on
+      data quality, consistency and reporting readiness.
+    </p>
+    <ul>
+      <li>Imported and structured source data</li>
+      <li>Standardized dates and numeric formats</li>
+      <li>Filtered irrelevant and internal records</li>
+      <li>Handled missing values</li>
+      <li>Created calculated columns and business KPIs</li>
+      <li>Validated the final dataset before reporting</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Data Model</h2>
+    <p>
+      The analytical model follows a dimensional star schema. A central fact table stores
+      measurable events and keys, while dimension tables support filtering and analysis.
+    </p>
+    <div class="grid">
+      <div class="kpi"><strong>Fact Table</strong>Traffic, bounce rate, SEO position and conversion measures.</div>
+      <div class="kpi"><strong>Date Dimension</strong>Time-based analysis and monthly reporting.</div>
+      <div class="kpi"><strong>Customer Dimension</strong>Segment and regional analysis.</div>
+      <div class="kpi"><strong>Website Dimension</strong>Page and platform analysis.</div>
+      <div class="kpi"><strong>SEO Dimension</strong>Keyword and search visibility analysis.</div>
+      <div class="kpi"><strong>Traffic Source Dimension</strong>Channel and acquisition analysis.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Dashboard Features</h2>
+    <ul>
+      <li>Monthly website traffic analysis</li>
+      <li>Platform and device comparison</li>
+      <li>Bounce rate monitoring</li>
+      <li>SEO position trend analysis</li>
+      <li>Traffic source comparison</li>
+      <li>Conversion KPI tracking</li>
+      <li>Geographic visualization</li>
+      <li>Interactive filters for month, segment and keyword</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Business Value</h2>
+    <p>The dashboard enables stakeholders to:</p>
+    <ul>
+      <li>Monitor digital performance from one centralized view</li>
+      <li>Identify changes in website traffic and SEO visibility</li>
+      <li>Compare marketing channels and platform usage</li>
+      <li>Evaluate visitor behaviour and conversion performance</li>
+      <li>Reduce manual reporting effort</li>
+      <li>Support faster, data-driven decisions</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Skills Demonstrated</h2>
+    <div class="grid">
+      <div class="kpi"><strong>Business Intelligence</strong>Executive reporting and decision support.</div>
+      <div class="kpi"><strong>Power Query</strong>Data cleaning, transformation and ETL.</div>
+      <div class="kpi"><strong>Data Modeling</strong>Dimensional modeling and star schema design.</div>
+      <div class="kpi"><strong>KPI Development</strong>Definition and calculation of business metrics.</div>
+      <div class="kpi"><strong>Dashboard Design</strong>Interactive visual reporting in Power BI.</div>
+      <div class="kpi"><strong>Digital Analytics</strong>SEO, traffic, bounce rate and conversion analysis.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Conclusion</h2>
+    <p>
+      This project demonstrates the complete Business Intelligence workflow, from data
+      preparation and dimensional modeling to dashboard development and executive reporting.
+    </p>
+    <p>
+      The final solution transforms digital marketing data into actionable insights while
+      maintaining client confidentiality and supporting scalable future development.
+    </p>
+  </section>
+
+  <div class="footer">
+    Portfolio Project Report · SEO & Digital Analytics Dashboard
+  </div>
+</main>
+</body>
+</html>

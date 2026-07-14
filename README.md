@@ -88,7 +88,7 @@ Features include:
 - SEO Dimension
 - Traffic Source Dimension
 
-![Star Schema](Images/star-schema.png)
+![Star Schema](Images/star-scheme.png)
 
 ---
 
